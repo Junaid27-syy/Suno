@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SUNO – You deserve to be heard</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8ee;--card:#fff;--ink:#2d2a43;--muted:#5b5877;--lav:#e6e0fa;--sky:#dcefff;--mint:#d9f4e6;--cream:#fff1da;--acc:#6d5bd0;--accd:#5846b8;--onacc:#fff;--line:#e6dff3;--warn:#fff4d6;--err:#b3261e;--sh:0 8px 24px rgba(80,60,140,.1);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1b2e;--card:#292640;--ink:#f1eefb;--muted:#bcb7d8;--lav:#3a3562;--sky:#26405a;--mint:#23473a;--cream:#3a3326;--acc:#a99cf7;--accd:#c2b8fa;--onacc:#1d1b2e;--line:#3d3960;--warn:#40371f;--err:#ff9a92;--sh:0 8px 24px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#1d1b2e;--card:#292640;--ink:#f1eefb;--muted:#bcb7d8;--lav:#3a3562;--sky:#26405a;--mint:#23473a;--cream:#3a3326;--acc:#a99cf7;--accd:#c2b8fa;--onacc:#1d1b2e;--line:#3d3960;--warn:#40371f;--err:#ff9a92;--sh:0 8px 24px rgba(0,0,0,.35)}
+*{box-sizing:border-box}html{height:100%;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 Nunito,"Segoe UI",system-ui,sans-serif}
+h1,h2,h3{line-height:1.2;margin:0 0 .6rem;font-weight:800}h1{font-size:clamp(1.8rem,5vw,2.8rem)}h2{font-size:1.4rem;margin-top:1.8rem}h3{font-size:1.1rem}
+p{margin:0 0 1rem;max-width:64ch}a{color:var(--accd)}ul{padding-left:1.2rem}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:8px}h1:focus{outline:none}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 16px;padding:10px 20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.5rem;color:var(--ink);text-decoration:none}
+.logo i{width:36px;height:36px;border-radius:12px;background:var(--lav);display:grid;place-items:center;font-style:normal;font-size:1.2rem}
+nav{display:flex;flex-wrap:wrap;gap:4px}nav a{padding:6px 13px;border-radius:99px;text-decoration:none;color:var(--ink);font-weight:600;transition:background .2s}
+nav a:hover,nav a[aria-current=page]{background:var(--lav)}nav a.sv{border:2px solid var(--acc)}
+.status{background:var(--warn);text-align:center;font-size:.92rem;padding:6px 12px}
+.page{padding:32px 0 52px;animation:in .35s ease both}@keyframes in{from{opacity:0}to{opacity:1}}
+.btn{display:inline-block;font:inherit;font-weight:700;border:2px solid var(--acc);background:var(--acc);color:var(--onacc);padding:11px 24px;border-radius:99px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--sh);background:var(--accd);border-color:var(--accd)}
+.btn.alt{background:transparent;color:var(--accd)}.btn.alt:hover{background:var(--lav);color:var(--ink)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}.hero svg{width:100%;height:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--sh)}
+.card p:last-child{margin-bottom:0}
+.tag{display:inline-block;background:var(--mint);border-radius:99px;padding:2px 12px;font-size:.9rem;font-weight:700;margin-bottom:8px}
+.note{background:var(--warn);border-radius:16px;padding:14px 18px;margin:0 0 22px;font-size:.98rem}
+fieldset{border:0;padding:0;margin:0 0 28px}legend{font-weight:800;font-size:1.15rem;margin-bottom:6px;padding:0}
+.hint{color:var(--muted);font-size:.95rem;margin:0 0 10px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.opt{position:relative;display:block}.opt input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.opt span{display:block;height:100%;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 16px;transition:border-color .2s,background .2s}
+.opt:hover span{border-color:var(--acc)}.opt input:checked+span{background:var(--lav);border-color:var(--acc);font-weight:700}
+.opt input:focus-visible+span{outline:3px solid var(--acc);outline-offset:3px}
+textarea{width:100%;min-height:130px;font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px 16px;resize:vertical}
+textarea::placeholder{color:var(--muted)}
+.err{color:var(--err);font-weight:700;margin:8px 0}
+.priv{background:var(--sky);border-radius:20px;padding:16px 22px;margin-bottom:22px}
+.sum dt{font-weight:800;margin-top:12px}.sum dd{margin:3px 0 0;white-space:pre-wrap}
+progress{width:100%;height:12px;accent-color:var(--acc);margin:4px 0 20px}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.steps li{counter-increment:s}.steps li:before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--lav);font-weight:800;margin-bottom:8px}
+.urgent{border:2px solid var(--acc)}.tel{font-weight:800}
+details{background:var(--cream);border-radius:14px;padding:10px 16px;margin-top:10px}summary{cursor:pointer;font-weight:700}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.95rem}footer p{max-width:none;margin:0 0 6px}
+[hidden]{display:none!important}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero svg{order:-1;max-width:340px;margin:0 auto}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#home" aria-label="SUNO home"><i aria-hidden="true">💬</i>SUNO</a>
+<nav aria-label="Main"><a href="#home">Home</a><a href="#share">Share</a><a href="#survey" class="sv">Student Survey</a><a href="#privacy">Your Trust</a><a href="#support">Support</a></nav>
+</div></header>
+<div class="status">College ideathon prototype — not a live counselling or emergency service.</div>
+
+<main class="wrap">
+<!-- HOME -->
+<section id="home" class="page" hidden>
+<div class="hero"><div>
+<h1 tabindex="-1">Sometimes, it’s hard to say it out loud. You deserve to be heard.</h1>
+<p>SUNO is exploring ways to help students communicate their concerns and discover suitable support pathways. Right now it is a prototype and a research project.</p>
+<div class="row"><a class="btn" href="#home" data-scroll="how">Explore SUNO</a><a class="btn alt" href="#survey">Take the Student Survey</a></div></div>
+<svg viewBox="0 0 400 340" role="img" aria-label="A student sitting on a cushion with speech bubbles and a small plant">
+<circle cx="200" cy="175" r="140" fill="var(--lav)"/><circle cx="310" cy="95" r="48" fill="var(--sky)"/><circle cx="90" cy="245" r="40" fill="var(--mint)"/>
+<path d="M60 80l5 11 12 2-9 8 2 12-10-6-10 6 2-12-9-8 12-2z" fill="#f6c453"/>
+<ellipse cx="200" cy="290" rx="105" ry="20" fill="var(--mint)"/><path d="M152 290c0-58 20-96 48-96s48 38 48 96z" fill="#7f6fe0"/>
+<circle cx="200" cy="155" r="36" fill="#f3c9a6"/><path d="M163 151c2-32 25-43 46-39 21 3 32 19 30 42-13-13-38-19-76-3z" fill="#4a3a6b"/>
+<circle cx="189" cy="160" r="3.5" fill="#2d2a43"/><circle cx="211" cy="160" r="3.5" fill="#2d2a43"/><path d="M191 173q9 7 18 0" stroke="#2d2a43" stroke-width="3" fill="none" stroke-linecap="round"/>
+<rect x="40" y="125" width="92" height="50" rx="18" fill="var(--card)" stroke="var(--acc)" stroke-width="2"/><circle cx="68" cy="150" r="5" fill="var(--acc)"/><circle cx="86" cy="150" r="5" fill="var(--acc)"/><circle cx="104" cy="150" r="5" fill="var(--acc)"/>
+<rect x="270" y="165" width="92" height="50" rx="18" fill="var(--card)" stroke="var(--acc)" stroke-width="2"/><path d="M316 200c-13-8-17-13-17-18a7 7 0 0 1 17-3 7 7 0 0 1 17 3c0 5-4 10-17 18z" fill="#f08aa6"/>
+<path d="M335 318v-32" stroke="#4aa37a" stroke-width="4"/><path d="M335 298c-20-2-22-22-22-22 20 0 22 22 22 22zM335 290c18-2 22-20 22-20-18 0-22 20-22 20z" fill="#4aa37a"/><rect x="322" y="314" width="26" height="20" rx="6" fill="#e0a070"/>
+</svg></div>
+
+<h2 id="how">How SUNO would work</h2>
+<p><span class="tag">Proposed service workflow</span> This is the planned journey. In the current prototype nothing is delivered to a person.</p>
+<ol class="steps">
+<li class="card"><h3>Share a concern</h3><p>Describe it in a comfortable way, or just choose a topic.</p></li>
+<li class="card"><h3>Choose what you need</h3><p>Pick the type of information or support you are looking for.</p></li>
+<li class="card"><h3>Explore a pathway</h3><p>See an appropriate support pathway and decide your next step.</p></li></ol>
+
+<h2>Why SUNO?</h2>
+<p class="hint">These are intended benefits, not proven outcomes. The research survey is how we plan to test them.</p>
+<div class="grid"><div class="card"><h3>Easier to express</h3><p>Lower the barrier to putting a concern into words.</p></div>
+<div class="card"><h3>Clearer information</h3><p>Make available support easier to find and understand.</p></div>
+<div class="card"><h3>More choice</h3><p>Let students decide what the next step should be.</p></div>
+<div class="card"><h3>More transparency</h3><p>Be open about privacy and what happens after sharing.</p></div></div>
+
+<h2>For the ideathon judges</h2>
+<div class="card"><ul style="margin:0"><li><strong>Problem:</strong> students may avoid asking for help because of fear of judgement, privacy worries or not knowing whom to approach.</li>
+<li><strong>Journey:</strong> <a href="#share">Share demonstration</a> shows the proposed flow, with local-only behaviour.</li>
+<li><strong>Validation:</strong> the <a href="#survey">Student Survey</a> is the research tool. <a href="#results">Results</a> appear only from real responses.</li>
+<li><strong>Safeguards:</strong> see <a href="#privacy">Your Trust</a>.</li>
+<li><strong>Planned next steps:</strong> collect survey responses, consult college counsellors, define a safeguarding and response process, then build and test a secure service.</li></ul></div>
+</section>
+
+<!-- SHARE -->
+<section id="share" class="page" hidden>
+<div id="f-form">
+<h1 tabindex="-1">What’s on your mind?</h1>
+<p class="note"><strong>Demonstration only.</strong> This shows how a future SUNO journey could work. Nothing is sent or stored.</p>
+<form id="frm" novalidate>
+<fieldset><legend>Step 1: What would you like to talk about?</legend><p class="hint">Choose any that fit. You can also skip this.</p><div class="opts" id="cats"></div></fieldset>
+<fieldset><legend><label for="more">Step 2: Would you like to explain more? (optional)</label></legend>
+<p class="note" style="margin-bottom:10px">Please do not include your name, contact details, roll number, or other identifying information. This is a demonstration, and no real support request will be sent.</p>
+<textarea id="more" maxlength="600" placeholder="Take your time. You can explain things in your own words."></textarea></fieldset>
+<fieldset><legend>Step 3: What would you like to happen next?</legend><div class="opts" id="nexts"></div><p class="err" id="e3" role="alert" hidden>Please choose one option. “I am not sure yet” is fine.</p></fieldset>
+<div class="priv"><strong>🔒 Before you continue:</strong> your choices stay in this page and are cleared when you finish, refresh or close it. This is not anonymous or confidential support. <a href="#privacy">Read Your Trust</a>.</div>
+<div class="row"><button class="btn" type="submit">Review my choices</button><a class="btn alt" href="#home">Go back</a></div>
+</form></div>
+<div id="f-review" hidden>
+<h1 tabindex="-1">Step 4: Review your choices</h1>
+<div class="card"><dl class="sum" id="sum" style="margin:0"></dl></div>
+<div class="row"><button class="btn" id="send" type="button">Complete demonstration</button><button class="btn alt" id="back" type="button">Edit my answers</button></div>
+</div>
+</section>
+
+<!-- SHARE DONE -->
+<section id="done" class="page" hidden><div class="card" style="text-align:center;max-width:680px;margin:20px auto;padding:34px 22px">
+<h1 tabindex="-1" style="font-size:clamp(1.6rem,4vw,2.1rem)">Demonstration complete</h1>
+<p style="margin-inline:auto"><strong>This was a demonstration only. Your responses were not sent to a counsellor, college authority, or support team.</strong></p>
+<p style="margin-inline:auto">If you need real help now, see the support options.</p>
+<div class="row" style="justify-content:center"><a class="btn" href="#support">Explore support options</a><a class="btn alt" href="#home">Back to home</a></div></div></section>
+
+<!-- SURVEY -->
+<section id="survey" class="page" hidden>
+<div id="s-form">
+<h1 tabindex="-1">SUNO — Student Support Research Survey</h1>
+<p class="note">We are exploring how college students experience academic and personal stress, what makes seeking support difficult, and what support options they would find useful. Participation is voluntary. Please do not share names, contact details, or identifying personal experiences. This survey is for an ideathon project and is not a counselling service.</p>
+<p class="note" id="svmode" style="background:var(--sky)"></p>
+<label for="prog" class="hint" id="proglbl">0 of 7 required questions answered</label><progress id="prog" max="7" value="0"></progress>
+<form id="svf" novalidate><div id="svq"></div>
+<div class="err" id="sverr" role="alert" tabindex="-1" hidden></div>
+<div class="row"><button class="btn" type="submit">Review my answers</button><a class="btn alt" href="#home">Cancel</a></div></form></div>
+<div id="s-review" hidden><h1 tabindex="-1">Review your answers</h1><div class="card"><dl class="sum" id="svsum" style="margin:0"></dl></div>
+<div class="err" id="sendErr" role="alert" hidden></div>
+<div class="row"><button class="btn" id="svsend" type="button"></button><button class="btn alt" id="svback" type="button">Edit my answers</button></div></div>
+<div id="s-done" hidden><div class="card" style="max-width:680px;margin:20px auto"><h1 tabindex="-1" style="font-size:1.8rem" id="sdh"></h1><p id="sdp"></p><div class="row"><a class="btn" href="#home">Back to home</a></div></div></div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="page" hidden>
+<h1 tabindex="-1">Survey results</h1>
+<div class="card"><h2 style="margin-top:0">No responses are connected yet</h2>
+<p>Results will appear here after genuine responses are collected through a configured survey destination. No sample or placeholder data is shown. A future dashboard would show total valid responses and, for each question, answers out of the people who answered it. Multiple-choice questions may total more than 100%. Individual responses and free-text answers would never be shown publicly.</p>
+<a class="btn alt" href="#survey">Go to the survey</a></div>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy" class="page" hidden>
+<h1 tabindex="-1">Your trust matters.</h1>
+<p>Plain answers about what this prototype does, and what a future service would need to do.</p>
+<div class="grid" style="grid-template-columns:1fr">
+<div class="card"><h2 style="margin-top:0">🛡️ What happens in this prototype?</h2><p><strong>Share demonstration:</strong> your choices and text are kept in this page’s memory only, so they can be shown on the review screen. They are not sent anywhere, saved in the browser, or logged, and are cleared when you finish, refresh or close the page.</p><p><strong>Survey:</strong> <span id="trS"></span></p></div>
+<div class="card"><h2 style="margin-top:0">❓ Is it anonymous?</h2><p>Not asking for a name does not guarantee anonymity. Details you write, or the settings of a survey platform, could still identify someone. SUNO does not claim anonymity.</p></div>
+<div class="card"><h2 style="margin-top:0">👀 Who can see the information?</h2><p>Share demonstration: only you, on your own device. <span id="trW"></span> No counsellors or college staff currently receive anything.</p></div>
+<div class="card"><h2 style="margin-top:0">⏳ How long is information kept?</h2><p>Share demonstration: until you finish, refresh or close the page. Survey: <span id="trR"></span></p></div>
+<div class="card"><h2 style="margin-top:0">🌱 How would a future SUNO service work?</h2><p><span class="tag">Future requirements, not yet implemented</span></p><ul><li>Limited, authorised access.</li><li>A documented data-retention policy.</li><li>Clear consent and privacy information.</li><li>Appropriate safeguarding procedures.</li><li>Secure handling of submissions.</li><li>A transparent explanation of any limits to confidentiality, for example when someone is at serious risk.</li></ul></div></div>
+</section>
+
+<!-- SUPPORT -->
+<section id="support" class="page" hidden>
+<h1 tabindex="-1">You don’t have to figure everything out alone.</h1>
+<p>SUNO is not an emergency response system, a diagnostic tool, or a replacement for professional care, and it cannot send help to you. Please confirm contact details on the official websites below before relying on them.</p>
+<div class="card urgent"><h2 style="margin-top:0">🚨 Urgent safety concerns</h2><p>If you or someone else may be in immediate danger, call <span class="tel">112</span> or go to the nearest hospital or a trusted adult. <a href="https://112.gov.in" target="_blank" rel="noopener">112 official site</a></p>
+<p><span class="tel">Tele-MANAS 14416</span> – government mental-health helpline. <a href="https://telemanas.mohfw.gov.in" target="_blank" rel="noopener">Official site</a><br><span class="tel">CHILDLINE 1098</span> – for children and young people under 18. <a href="https://www.childlineindia.org" target="_blank" rel="noopener">Official site</a></p></div>
+<div class="grid" style="grid-template-columns:1fr">
+<div class="card"><h2 style="margin-top:0">🌱 General wellbeing information</h2><p>Sleep, movement, breaks and talking to people you trust can all help. <a href="https://www.who.int/health-topics/mental-health" target="_blank" rel="noopener">WHO mental health overview</a></p></div>
+<div class="card"><h2 style="margin-top:0">🗣️ Speaking to a trusted person</h2><details><summary>How to start the conversation</summary><ul><li>Pick a calm moment: “Can I talk to you about something?”</li><li>Start with one sentence: “I’ve been feeling… about…”</li><li>Write a note if speaking is too hard.</li><li>Say what you need: to be heard, advice, or help.</li></ul></details></div>
+<div class="card"><h2 style="margin-top:0">🧡 Finding qualified counselling support</h2><p>Ask whether your college has a counselling or student-support cell. A doctor can also refer you. Tele-MANAS (above) offers trained counsellors.</p></div>
+<div class="card"><h2 style="margin-top:0">🛟 College grievance and anti-ragging pathways</h2><p>Tell a teacher, coordinator or principal you trust, and note what happened, when and who was there. Colleges have grievance and anti-ragging committees. <a href="https://www.antiragging.in" target="_blank" rel="noopener">Anti-ragging official site</a></p></div></div>
+</section>
+</main>
+
+<footer><div class="wrap"><p><strong>SUNO</strong> – A space to be heard. A choice to take the next step.</p><p>College ideathon prototype. Not a medical, counselling or emergency service. <a href="#results">Research results</a></p></div></footer>
+
+<script>
+// ---- SURVEY SETUP: paste your Google Apps Script Web App URL (ends in /exec) here. No Content-Type header is sent on purpose, so the browser skips the CORS preflight that Apps Script does not support.
+// Leave "" for preview mode (nothing is sent). Never put secret keys here. The endpoint must allow CORS.
+const SURVEY_ENDPOINT="https://script.google.com/macros/s/AKfycbzEhptYxXZbywwayZ5gc09yR-AI-8eoQOoVH7J5jOeZ9JQqJhCrjetTuRYCKYrRXyTT/exec";
+const $=s=>document.querySelector(s),pages=['home','share','survey','privacy','support','done','results'];
+const CATS=["Academic pressure and examinations","Friendships and relationships","Family expectations","Bullying or feeling excluded","Stress, sadness, or feeling overwhelmed","Other","Prefer not to say"];
+const NEXTS=["Explore general support resources.","Learn how to access trained human support.","Understand available ways to raise a concern.","I am not sure yet."];
+const PNS="Prefer not to say";
+const SV=[
+{k:'year',q:'Current year of study',t:'r',o:['First year','Second year','Third year','Fourth year or above',PNS]},
+{k:'freq',q:'How often do academic or personal concerns affect your day-to-day college life?',t:'r',o:['Never or rarely','Sometimes','Often','Very often',PNS]},
+{k:'barr',q:'What might stop a student from seeking support?',t:'c',o:['Fear of being judged','Concern about privacy','Not knowing whom to approach','Difficulty accessing support','Cost or lack of time','Not feeling comfortable talking','Concern that nothing will change','No major barriers','Other or prefer not to say'],x:['No major barriers','Other or prefer not to say']},
+{k:'aware',q:'Do you know where to find student counselling or wellbeing support at your college?',t:'r',o:['Yes, and I know how to access it','I have heard of it but do not know how to access it','No','Not sure']},
+{k:'pref',q:'Which support options would you prefer a college service to offer?',t:'c',o:['Information about available resources','A way to request a conversation with a trained counsellor','A way to raise a concern with an appropriate college team','Self-guided wellbeing resources','A choice between different options','Not sure'],x:['Not sure']},
+{k:'trust',q:'What would make a student more comfortable using a service like SUNO?',t:'c',o:['Clear explanation of who can see responses','A clear privacy and data-retention policy','Choice over the type of support','Access to trained human support','Clear explanation of what happens after submitting','Verified college support partnerships','Not sure'],x:['Not sure']},
+{k:'try',q:'If a service like SUNO were available with clear privacy safeguards and appropriate human support, how likely would you be to try it?',t:'r',o:['Very likely','Somewhat likely','Not sure','Somewhat unlikely','Very unlikely'],n:'This measures stated interest in a proposed service, not actual use or effectiveness.'},
+{k:'idea',q:'What is one improvement you would want in student support services?',t:'t'}];
+let submitted=false,svDone=false,sending=false;
+const opt=(type,name,v)=>`<label class="opt"><input type="${type}" name="${name}" value="${v}"><span>${v}</span></label>`;
+$('#cats').innerHTML=CATS.map(c=>opt('checkbox','cat',c)).join('');
+$('#nexts').innerHTML=NEXTS.map(n=>opt('radio','next',n)).join('');
+$('#svq').innerHTML=SV.map((s,i)=>`<fieldset><legend>${i+1}. ${s.q} <small>(${s.t==='t'?'Optional':s.t==='c'?'Required, choose all that apply':'Required'})</small></legend>${s.n?`<p class="hint">${s.n}</p>`:''}`+(s.t==='t'?`<p class="note" style="margin-bottom:10px">Do not include names, identifying information, or sensitive personal disclosures.</p><textarea name="idea" maxlength="300" aria-label="${s.q}"></textarea>`:`<div class="opts">${s.o.map(o=>opt(s.t==='c'?'checkbox':'radio',s.k,o)).join('')}</div>`)+'</fieldset>').join('');
+const C=!!SURVEY_ENDPOINT;
+$('#svmode').textContent=C?'Your answers will be saved in a Google Sheet managed by the project team when you submit. See Your Trust for details.':'Preview only: no survey destination is configured, so nothing you answer here is sent or saved.';
+$('#trS').textContent=C?'when you submit, your selected answers and any optional short text are sent to a Google Sheet managed by the project team, along with the time of submission. We do not ask for names or contact details.':'no survey destination is configured in this version, so nothing is collected. It is a preview.';
+$('#trW').textContent=C?'Survey: people the project team gives access to the Google Sheet can see the answers. Google also processes the data under its own terms.':'Survey: nothing is collected in this version.';
+$('#trR').textContent=C?'answers stay in the Google Sheet until the project team deletes them. No automatic deletion is set up. The team should decide and publish a retention period.':'not applicable in this version.';
+$('#svsend').textContent=SURVEY_ENDPOINT?'Submit survey':'Finish preview';
+const vals=n=>[...document.querySelectorAll(`[name=${n}]:checked`)].map(i=>i.value);
+function exclusive(e){const i=e.target,s=SV.find(q=>q.k===i.name);if(!s||!s.x||!i.checked)return;
+document.querySelectorAll(`[name=${s.k}]`).forEach(o=>{if(o!==i&&(s.x.includes(i.value)||s.x.includes(o.value)))o.checked=false})}
+$('#svq').addEventListener('change',e=>{exclusive(e);const n=SV.filter(s=>s.t!=='t'&&vals(s.k).length).length;$('#prog').value=n;$('#proglbl').textContent=n+' of 7 required questions answered'});
+function step(p,s,list){list.forEach(x=>$('#'+p+'-'+x).hidden=x!==s);scrollTo(0,0);$('#'+p+'-'+s+' h1').focus()}
+function route(){let h=location.hash.slice(1)||'home';if(!pages.includes(h)||(h==='done'&&!submitted))h='home';
+pages.forEach(p=>$('#'+p).hidden=p!==h);if(h==='share')step('f','form',['form','review']);if(h==='survey'&&!svDone)step('s','form',['form','review','done']);
+document.querySelectorAll('nav a').forEach(a=>a.setAttribute('aria-current',a.hash==='#'+h?'page':'false'));
+scrollTo(0,0);$('#'+h+' h1').focus()}
+addEventListener('hashchange',route);route();
+document.addEventListener('click',e=>{const a=e.target.closest('[data-scroll]');if(a){e.preventDefault();$('#'+a.dataset.scroll).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})}});
+function fill(dl,rows){dl.replaceChildren();rows.forEach(([k,v])=>{const t=document.createElement('dt'),d=document.createElement('dd');t.textContent=k;d.textContent=v;dl.append(t,d)})}
+// Share demonstration (local only)
+$('#frm').addEventListener('submit',e=>{e.preventDefault();const nx=vals('next')[0];$('#e3').hidden=!!nx;if(!nx){document.querySelector('[name=next]').focus();return}
+const c=vals('cat');fill($('#sum'),[['Topics',c.length?c.join('\n'):'None chosen'],['In your words',$('#more').value.trim()||'You chose not to add more.'],['What you’d like next',nx]]);step('f','review',['form','review'])});
+$('#back').onclick=()=>step('f','form',['form','review']);
+$('#send').onclick=()=>{submitted=true;$('#frm').reset();$('#sum').replaceChildren();location.hash='done';route()};
+// Survey
+$('#svf').addEventListener('submit',e=>{e.preventDefault();const miss=SV.map((s,i)=>s.t!=='t'&&!vals(s.k).length?i:-1).filter(i=>i>=0),er=$('#sverr');
+if(miss.length){er.hidden=false;er.textContent='Please answer: question '+miss.map(i=>i+1).join(', ')+'.';er.focus();document.querySelector(`[name=${SV[miss[0]].k}]`).focus();return}
+er.hidden=true;fill($('#svsum'),SV.map((s,i)=>[(i+1)+'. '+s.q,s.t==='t'?($('#svq textarea').value.trim()||'Not answered'):vals(s.k).join('\n')]));$('#sendErr').hidden=true;step('s','review',['form','review','done'])});
+$('#svback').onclick=()=>step('s','form',['form','review','done']);
+$('#svsend').onclick=async()=>{const b=$('#svsend'),fin=ok=>{svDone=true;$('#sdh').textContent=ok?'Thank you':'Preview complete';$('#sdp').textContent=ok?'Your response was received. Thank you for taking part.':'This was a preview. Nothing was sent or saved, because no survey destination is configured.';step('s','done',['form','review','done'])};
+if(!SURVEY_ENDPOINT){fin(false);return}
+if(sending||svDone)return;sending=true;b.disabled=true;b.textContent='Sending…';
+const body={};SV.forEach(s=>body[s.k]=s.t==='t'?$('#svq textarea').value.trim():s.t==='c'?vals(s.k):vals(s.k)[0]);
+try{const r=await fetch(SURVEY_ENDPOINT,{method:'POST',body:JSON.stringify(body)});const j=await r.json();if(!r.ok||!j.ok)throw 0;fin(true)}
+catch{const er=$('#sendErr');er.hidden=false;er.textContent='Your answers were not sent. Please check your connection and try again.';b.disabled=false;b.textContent='Try again'}finally{sending=false}};
+</script>
+</body>
+</html>
